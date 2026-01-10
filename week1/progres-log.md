@@ -1,59 +1,85 @@
+# Learning Progress Log
+
 ## Day 1 – NumPy Basics: Arrays, Dimensions, Slicing
 
-### What is NumPy (brief)
-NumPy is a Python library for numerical computing that introduces the `ndarray` object, a fast, memory-efficient multidimensional array used heavily in data science and machine learning. It offers convenient operations for vectors and matrices, together with metadata such as the number of dimensions (`ndim`) and the shape of the array (`shape`), which makes reasoning about data much easier than with raw Python lists.
+### What I did
 
-### What I did today
-- Created a virtual environment and initialized the project structure:
-  - `README.md`
-  - `week1/np_day1.py`
-  - `week1/progres-log.md`
-- Wrote my first NumPy script `np_day1.py` to:
-  - Create and inspect 1D arrays.
-  - Create and inspect 2D arrays (matrices).
-  - Practice basic indexing and slicing on rows and columns.
+* Set up my project structure and virtual environment.
+* Created my first NumPy script: `np_day1.py`.
+* Learned how to create 1D and 2D NumPy arrays.
+* Practiced indexing and slicing rows and columns.
 
-### Code concepts practiced (np_day1.py)
-- **1D array creation and inspection**
-  - Created a 1D array: `a = np.array([1, 2, 3])`
-  - Checked:
-    - `a.ndim` → number of dimensions (1)
-    - `a.shape` → shape `(3,)`
-  - Practiced slicing:
-    - `a[1:]` → elements from index 1 to the end
+### Concepts practiced
 
-- **2D array creation and inspection**
-  - Created a 2D array (matrix):
+* `np.array()`
+* `ndim` and `shape`
+* Basic indexing: `arr[i]`, `arr[row, col]`
+* Slicing: `start:stop:step`
+* Reversing rows/columns with `[::-1]`
 
-    ```
-    v1 = np.array([
-       ,[1][4][5]
-       ,[6][7][8]
-[9][10][11]
-    ])
-    ```
+### What I learned
 
-  - Checked:
-    - `v1.ndim` → 2 (matrix)
-    - `v1.shape` → `(3, 3)` (3 rows, 3 columns)
-  - Accessed a single element:
-    - `v1[1, 2]` → element at row 2, column 3 (0-based indexing)
+* The difference between 1D and 2D arrays.
+* How NumPy represents dimensions and shapes.
+* How slicing works on rows and columns.
+* Why understanding array structure is important for ML and data analysis.
 
-- **Row slicing**
-  - `v1[1:]` → all rows from index 1 (second row) to the end
-  - `v1[:-1]` → all rows except the last
-  - `v1[::-1]` → rows in reverse order
+---
 
-- **Column slicing**
-  - `v1[:, 1:]` → all rows, columns from index 1 to the end
-  - `v1[:, :-1]` → all rows, all columns except the last
-  - `v1[:, :-2]` → all rows, only the first column
-  - `v1[:, ::-1]` → all rows, columns in reverse order
+## Day 2 – Vectorized Operations, Math Functions, and Filtering
 
-### What I learned / understood
-- Difference between 1D and 2D arrays and how `ndim` and `shape` reflect that.
-- How to access:
-  - A single element with `[row, col]` for 2D arrays.
-  - Subparts of an array with slicing syntax (`start:stop:step`).
-- How negative indices and step `-1` allow reversing rows or columns.
-- That NumPy arrays give a clear structure (dimensions + shape) which is essential before doing any ML or data analysis.
+### What I did
+
+* Practiced vectorized mathematical operations on NumPy arrays.
+* Used built-in NumPy math functions on entire arrays.
+* Learned how to compare array values using boolean operators.
+* Filtered arrays using boolean conditions.
+* Modified array values based on conditions.
+
+### Code concepts practiced
+
+#### Vectorized math functions
+
+* Applied math functions directly to arrays:
+
+  * `np.sqrt()`
+  * `np.round()`
+  * `np.floor()`
+  * `np.ceil()`
+* Used constants like `np.pi`.
+
+#### Vectorized arithmetic
+
+* Performed element-wise operations:
+
+  * Addition: `v1 + v2`
+  * Subtraction: `v1 - v2`
+  * Multiplication: `v1 * v2`
+  * Power: `v2 ** v1`
+
+#### Comparison operators
+
+* Compared arrays with scalars:
+
+  * `ages == 20`
+  * `ages > 20`
+  * `ages < 20`
+* Learned that comparisons return boolean arrays.
+
+#### Filtering (Boolean indexing)
+
+* Extracted values based on conditions:
+
+  * `ages[ages <= 18]` → teenagers
+  * `ages[ages >= 30]` → adults
+* Modified values conditionally:
+
+  * `ages[ages < 20] = 0`
+
+### What I learned
+
+* NumPy operations are vectorized, meaning they work on whole arrays at once.
+* Math functions in NumPy apply element-wise automatically.
+* Comparison operators return boolean masks.
+* Boolean indexing is a powerful way to filter and modify data.
+* This style of computation is much faster and cleaner than using Python loops.
