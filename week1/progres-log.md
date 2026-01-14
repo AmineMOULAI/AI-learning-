@@ -1,85 +1,214 @@
-# Learning Progress Log
+# NumPy Progress Log
 
-## Day 1 – NumPy Basics: Arrays, Dimensions, Slicing
+## Introduction to NumPy
 
-### What I did
+NumPy (Numerical Python) is a core Python library for numerical computing. It provides fast, efficient operations on large multi-dimensional arrays and matrices. NumPy is widely used in data science, machine learning, scientific computing, and engineering.
 
-* Set up my project structure and virtual environment.
-* Created my first NumPy script: `np_day1.py`.
-* Learned how to create 1D and 2D NumPy arrays.
-* Practiced indexing and slicing rows and columns.
+### Key Features
 
-### Concepts practiced
-
-* `np.array()`
-* `ndim` and `shape`
-* Basic indexing: `arr[i]`, `arr[row, col]`
-* Slicing: `start:stop:step`
-* Reversing rows/columns with `[::-1]`
-
-### What I learned
-
-* The difference between 1D and 2D arrays.
-* How NumPy represents dimensions and shapes.
-* How slicing works on rows and columns.
-* Why understanding array structure is important for ML and data analysis.
+* Fast array operations
+* Vectorized computation (no loops needed)
+* Broadcasting support
+* Mathematical & statistical functions
+* Random number generation
+* Linear algebra tools
 
 ---
 
-## Day 2 – Vectorized Operations, Math Functions, and Filtering
+## Element-wise Operations
 
-### What I did
+NumPy performs operations element by element.
 
-* Practiced vectorized mathematical operations on NumPy arrays.
-* Used built-in NumPy math functions on entire arrays.
-* Learned how to compare array values using boolean operators.
-* Filtered arrays using boolean conditions.
-* Modified array values based on conditions.
+### Examples
 
-### Code concepts practiced
+* Addition: `v1 + v2`
+* Subtraction: `v1 - v2`
+* Multiplication: `v1 * v2`
+* Power: `v2 ** v1`
 
-#### Vectorized math functions
+---
 
-* Applied math functions directly to arrays:
+## Comparison Operators
 
-  * `np.sqrt()`
-  * `np.round()`
-  * `np.floor()`
-  * `np.ceil()`
-* Used constants like `np.pi`.
+Comparison operators return boolean arrays.
 
-#### Vectorized arithmetic
+### Examples
 
-* Performed element-wise operations:
+* `ages == 20`
+* `ages > 20`
+* `ages < 20`
 
-  * Addition: `v1 + v2`
-  * Subtraction: `v1 - v2`
-  * Multiplication: `v1 * v2`
-  * Power: `v2 ** v1`
+---
 
-#### Comparison operators
+## Filtering (Boolean Indexing)
 
-* Compared arrays with scalars:
+Filtering allows extracting values based on conditions.
 
-  * `ages == 20`
-  * `ages > 20`
-  * `ages < 20`
-* Learned that comparisons return boolean arrays.
+### Examples
 
-#### Filtering (Boolean indexing)
+* Teenagers: `ages[ages <= 18]`
+* Adults: `ages[ages >= 30]`
 
-* Extracted values based on conditions:
+### Conditional Modification
 
-  * `ages[ages <= 18]` → teenagers
-  * `ages[ages >= 30]` → adults
-* Modified values conditionally:
+* `ages[ages < 20] = 0`
 
-  * `ages[ages < 20] = 0`
+---
 
-### What I learned
+## What I Learned
 
-* NumPy operations are vectorized, meaning they work on whole arrays at once.
-* Math functions in NumPy apply element-wise automatically.
-* Comparison operators return boolean masks.
-* Boolean indexing is a powerful way to filter and modify data.
-* This style of computation is much faster and cleaner than using Python loops.
+* NumPy operations are vectorized.
+* Math functions work element-wise.
+* Comparisons return boolean masks.
+* Boolean indexing is powerful for data filtering.
+* NumPy is faster and cleaner than Python loops.
+
+---
+
+## Broadcasting
+
+Broadcasting allows NumPy to perform operations on arrays of different shapes.
+
+### Example
+
+```python
+a = np.array([1, 2, 3, 4])
+b = 2
+a * b
+```
+
+Output:
+
+```
+[2, 4, 6, 8]
+```
+
+### Broadcasting Rules (Simplified)
+
+Two arrays are compatible when:
+
+1. They have the same shape
+2. One of them has size 1 in a dimension
+
+Otherwise → ❌ Error
+
+---
+
+## 2D Broadcasting Example
+
+```python
+v1 = np.array([[1, 2, 3, 4]])
+v2 = np.array([[1], [2], [3], [4]])
+
+v1 * v2
+```
+
+This produces a (4 × 4) result.
+
+---
+
+## Aggregate Functions
+
+Aggregate functions reduce arrays to a single value.
+
+```python
+array = np.array([[1, 2, 3, 4],
+                  [5, 6, 7, 8]])
+```
+
+### Common Functions
+
+| Function      | Description        |
+| ------------- | ------------------ |
+| `np.sum()`    | Sum                |
+| `np.mean()`   | Mean               |
+| `np.std()`    | Standard deviation |
+| `np.min()`    | Minimum            |
+| `np.max()`    | Maximum            |
+| `np.argmin()` | Index of min       |
+| `np.argmax()` | Index of max       |
+
+### Axis Operations
+
+* Row-wise: `np.sum(array, axis=1)`
+* Column-wise: `np.sum(array, axis=0)`
+
+---
+
+## Advanced Filtering
+
+```python
+v = np.array([[21, 17, 22, 2, 89, 36, 74, 17, 66, 3, 0]])
+```
+
+### Even Numbers
+
+```python
+v[v % 2 == 0]
+```
+
+### Odd Numbers
+
+```python
+v[v % 2 != 0]
+```
+
+---
+
+## Random Numbers
+
+NumPy provides a modern random generator.
+
+```python
+rng = np.random.default_rng()
+```
+
+### Random Integers
+
+```python
+rng.integers(low=1, high=100)
+rng.integers(low=1, high=100, size=3)
+rng.integers(low=1, high=100, size=(2,5))
+```
+
+### Random Floats
+
+```python
+np.random.uniform(low=-1, high=1)
+np.random.uniform(low=-1, high=1, size=(3,4))
+```
+
+---
+
+## Shuffle and Random Choice
+
+### Shuffle
+
+```python
+rng.shuffle(a)
+```
+
+Shuffles the array in-place.
+
+### Random Choice
+
+```python
+rng.choice(fruits)
+rng.choice(fruits, size=3)
+```
+
+---
+
+## Final Summary
+
+So far, I have learned:
+
+* Vectorized operations
+* Boolean masking
+* Broadcasting
+* Aggregate functions
+* Advanced filtering
+* Random number generation
+* Shuffling and sampling
+
+NumPy allows clean, fast, and expressive numerical computation.

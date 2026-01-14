@@ -38,6 +38,7 @@ print("age > 20", ages > 20)
 print("age < 20", ages < 20)
 ages[ages < 20] = 0
 print("age < 20 => age = 0 : ", ages)
+
 print("\n####### Filtring  ########\n")
 
 ages = np.array([16, 23, 32, 77, 22, 12, 45, 31, 27, 21, 84])
