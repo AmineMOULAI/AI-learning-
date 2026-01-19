@@ -199,9 +199,113 @@ rng.choice(fruits, size=3)
 
 ---
 
+## Pandas (Day 4)
+
+Pandas is a powerful Python library built on top of NumPy. It is mainly used for **data manipulation, analysis, and cleaning**. Pandas provides two main data structures:
+
+* **Series** → 1D labeled array (like a column)
+* **DataFrame** → 2D labeled table (like a spreadsheet)
+
+Pandas is widely used in data science, machine learning, finance, and statistics.
+
+---
+
+## Series
+
+A Series is a one-dimensional labeled array.
+
+### Creating a Series
+
+```python
+serie1 = pd.Series([12, 54, 30])
+```
+
+```python
+serie2 = pd.Series([10.5, 54.2, 78.3, 5.8])
+```
+
+### Series with Labels
+
+```python
+serie = pd.Series([10.5, 54.2, 78.3, 5.8], index=["a", "b", "c", "d"])
+```
+
+You can access values by:
+
+* Label: `serie.loc["a"]`
+* Index: `serie.iloc[0]`
+
+### Modifying Values
+
+```python
+serie["d"] = 20.7
+```
+
+### Filtering Series
+
+```python
+c[c > 2000]
+```
+
+---
+
+## DataFrames
+
+A DataFrame is a 2D table with rows and columns.
+
+### Creating a DataFrame
+
+```python
+data = {
+  "calories": [420, 380, 390],
+  "duration": [50, 40, 45]
+}
+
+df = pd.DataFrame(data, index=["Week 1", "Week 2", "Week 3"])
+```
+
+### Accessing Rows
+
+```python
+df.loc["Week 1"]
+df.iloc[0]
+```
+
+### Adding a Column
+
+```python
+df["Weight"] = [62, 63, 61]
+```
+
+### Adding Rows
+
+```python
+row = pd.DataFrame([
+  {"calories": 500, "duration": 48, "Weight": 63}
+], index=["Week 4"])
+
+df = pd.concat([df, row])
+```
+
+### Adding Multiple Rows
+
+```python
+rows = pd.DataFrame([
+  {"calories": 500, "duration": 48, "Weight": 63},
+  {"calories": 480, "duration": 46, "Weight": 62},
+  {"calories": 410, "duration": 42, "Weight": 60}
+], index=["Week 5", "Week 6", "Week 7"])
+
+df = pd.concat([df, rows])
+```
+
+---
+
 ## Final Summary
 
 So far, I have learned:
+
+### NumPy
 
 * Vectorized operations
 * Boolean masking
@@ -211,4 +315,15 @@ So far, I have learned:
 * Random number generation
 * Shuffling and sampling
 
-NumPy allows clean, fast, and expressive numerical computation.
+### Pandas
+
+* Series creation and labeling
+* Index-based access (`loc`, `iloc`)
+* Filtering data
+* Creating DataFrames
+* Adding columns
+* Adding rows using `concat`
+
+NumPy is great for numerical computing.
+Pandas is perfect for working with structured data.
+Together, they form the foundation of data science in Python.

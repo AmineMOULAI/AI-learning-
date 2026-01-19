@@ -6,8 +6,8 @@ print("####### BROADCASTING ########\n")
 a = np.array([1, 2, 3, 4])
 b = 2
 
-print("a[] : ", a);
-print("b[] : ", b);
+print("a[] : ", a)
+print("b[] : ", b)
 print("[Broadcasting]  a * b : ", a * b)
 
 
